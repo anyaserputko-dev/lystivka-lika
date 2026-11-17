@@ -48,7 +48,17 @@ const Music = (() => {
   function sfx(fn) { if (ac && on) fn(ac.currentTime); }
   return {
     start() {
-      if (ac) return; ac = new (window.AudioContext || window.webkitAudioContext)();
+      if (ac) return;
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+      try { // iOS: беззвучний режим глушить Web Audio, тихий <audio> перемикає на медіа-канал
+        const n = 8000, buf = new Uint8Array(44 + n), dv = new DataView(buf.buffer), w = (o, s) => [...s].forEach((c, k) => buf[o + k] = c.charCodeAt(0));
+        w(0, 'RIFF'); dv.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
+        dv.setUint32(24, 8000, true); dv.setUint32(28, 8000, true); dv.setUint16(32, 1, true); dv.setUint16(34, 8, true); w(36, 'data'); dv.setUint32(40, n, true); buf.fill(128, 44);
+        const au = new Audio(URL.createObjectURL(new Blob([buf], {type: 'audio/wav'}))); au.loop = true; au.setAttribute('playsinline', ''); au.play().catch(() => {});
+        document.addEventListener('visibilitychange', () => document.hidden ? au.pause() : on && au.play().catch(() => {}));
+      } catch (e) {}
+      ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state !== 'running') ac.resume();
+      const wake = () => { if (on && ac.state !== 'running') ac.resume(); }; addEventListener('touchend', wake); addEventListener('click', wake);
       out = ac.createGain(); out.gain.value = .9; const lp = ac.createBiquadFilter(); lp.frequency.value = 3800; out.connect(lp); lp.connect(ac.destination);
       echo = ac.createGain(); const dl = ac.createDelay(), fb = ac.createGain(); dl.delayTime.value = .33; fb.gain.value = .38;
       echo.connect(lp); echo.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(lp);
