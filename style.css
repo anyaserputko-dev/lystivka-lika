@@ -1,0 +1,162 @@
+:root{--S:min(80vw,400px);--gg:none;--gp:none;--gs:none;--teal:#008080}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{min-height:100vh;color:#fff;font:18px/1.45 "Comic Sans MS","Pangolin",cursive;overflow-x:hidden;
+  background:#14002b radial-gradient(ellipse at 50% 0%,#5b0a72 0%,#2a0548 45%,#0d0020 100%) fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 120px,#ffd,transparent),
+  radial-gradient(1.5px 1.5px at 150px 60px,#fcf,transparent),radial-gradient(1px 1px at 200px 170px,#fff,transparent),
+  radial-gradient(2px 2px at 60px 190px,#ff9,transparent);background-size:230px 230px;animation:tw 3s steps(2) infinite}
+@keyframes tw{50%{opacity:.25}}
+button{font:inherit;cursor:pointer}
+
+/* ---------- Windows 98 ---------- */
+#intro{position:fixed;inset:0;z-index:50;background:var(--teal);font:14px/1.35 Tahoma,Verdana,"Segoe UI",sans-serif;color:#000}
+.desk-icons{position:absolute;left:12px;top:12px;display:grid;gap:18px}
+.desk-icons div{width:84px;text-align:center;color:#fff;font-size:12px;text-shadow:1px 1px #000}
+.desk-icons span{display:block;font-size:34px;line-height:1.2}
+.win{position:absolute;background:#c0c0c0;border:2px solid;border-color:#fff #000 #000 #fff;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf;padding:3px;color:#000;font:14px/1.35 Tahoma,Verdana,sans-serif}
+#introWin{left:50%;top:44%;transform:translate(-50%,-50%);width:min(92vw,380px);animation:pop .35s ease-out}
+@keyframes pop{from{transform:translate(-50%,-50%) scale(.2);opacity:0}}
+.win-title{display:flex;align-items:center;gap:3px;background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:700;padding:3px 3px 3px 6px;font-size:13px}
+.win-title span{flex:1;white-space:nowrap;overflow:hidden}
+.win-title i{font-style:normal;width:18px;height:16px;line-height:13px;text-align:center;background:#c0c0c0;color:#000;font-size:11px;border:1px solid;border-color:#fff #000 #000 #fff;cursor:default}
+.win-body{padding:14px 12px 10px}
+.win-row{display:flex;gap:14px;align-items:flex-start}
+.win-ico{font-size:38px;line-height:1}
+.win-row small{color:#444}
+.win-btns{display:flex;justify-content:center;gap:12px;margin-top:16px;position:relative}
+.btn98{min-width:92px;padding:5px 12px;background:#c0c0c0;color:#000;font:14px Tahoma,Verdana,sans-serif;border:2px solid;border-color:#fff #000 #000 #fff;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf}
+.btn98:active{border-color:#000 #fff #fff #000;box-shadow:inset 1px 1px #808080}
+#openBtn{outline:1px dotted #000;outline-offset:-5px;animation:blinkb 1s steps(2) infinite}
+@keyframes blinkb{50%{background:#ffff80}}
+#noBtn.run{position:fixed;transition:left .18s,top .18s;z-index:5}
+.taskbar{position:absolute;left:0;right:0;bottom:0;height:36px;background:#c0c0c0;border-top:2px solid #fff;display:flex;align-items:center;gap:6px;padding:0 4px}
+.taskbar .start{min-width:0;padding:3px 8px}
+.tb-item{flex:1;max-width:200px;border:2px solid;border-color:#000 #fff #fff #000;padding:3px 8px;font-size:12px;white-space:nowrap;overflow:hidden;background:#d8d8d8}
+.clock{margin-left:auto;border:1px solid;border-color:#808080 #fff #fff #808080;padding:4px 10px;font-size:12px}
+
+/* ---------- открытка ---------- */
+#card{position:relative;z-index:2;padding:64px 12px 40px}
+.garland{position:absolute;left:0;top:0;width:100%;height:60px}
+.flags{position:absolute;left:0;right:0;top:0;height:70px;pointer-events:none}
+.flags i{position:absolute;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:30px solid;transform-origin:50% 0;animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.col{max-width:720px;margin:0 auto;text-align:center;padding:18px 12px 26px;border:8px ridge #ff69b4;border-radius:6px;
+  background:rgba(25,0,45,.72);box-shadow:0 0 30px #ff00cc66,inset 0 0 40px #ff00cc33}
+.pre{margin:0 0 4px;color:#7fff00;font-weight:700;letter-spacing:2px;text-shadow:0 0 8px #7fff00}
+.blink{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* WordArt: экструзия + блёстки */
+.wordart{margin:6px 0 4px;font:400 clamp(46px,14.5vw,100px)/1.02 "Lobster",cursive;letter-spacing:1px}
+.wordart .w{display:block;white-space:nowrap}
+.wordart .L{position:relative;display:inline-block;animation:wave 1.8s ease-in-out infinite;animation-delay:calc(var(--i)*-.13s)}
+.wordart .L::before{content:attr(data-c);position:absolute;left:0;top:0;color:#6b3600;
+  text-shadow:1px 1px 0 #7a4200,2px 2px 0 #6b3600,3px 3px 0 #5e2f00,4px 4px 0 #522900,5px 5px 0 #452200,6px 6px 0 #3a1c00,8px 10px 10px rgba(0,0,0,.6)}
+.wordart .L i{position:relative;z-index:1;font-style:normal;background:var(--gg) 0 0/64px 192px;-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px #fff7b0;animation:glit .5s steps(3) infinite}
+.wordart .sp{display:inline-block;width:.3em}
+@keyframes wave{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-.12em) rotate(3deg)}}
+@keyframes glit{to{background-position:0 -192px}}
+.glit-p{background:var(--gp) 0 0/64px 192px;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:glit .5s steps(3) infinite}
+.name{margin:0;font:clamp(34px,10vw,64px)/1.1 "Lobster",cursive;filter:drop-shadow(2px 2px 0 #7a0040) drop-shadow(2px 2px 0 #500030)}
+.sub{margin:8px 0 14px;font:clamp(24px,6.6vw,34px)/1.2 "Marck Script",cursive;color:#ffb6e6;text-shadow:0 0 10px #ff1493,0 0 2px #fff}
+.beat{display:inline-block;color:#ff1744;animation:beat .8s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.35)}}
+.mq{display:block;font-weight:700;font-size:20px;padding:6px 0;background:linear-gradient(90deg,#ff0080,#ff8c00,#ffe600,#00e676,#00b0ff,#d500f9);color:#fff;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;border:3px outset #ffd700}
+.hr{height:6px;margin:22px 0;border-radius:3px;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red) 0 0/200% 100%;animation:hr 2s linear infinite;box-shadow:0 0 10px #fff8}
+@keyframes hr{to{background-position:200% 0}}
+.h2{margin:4px 0 14px;font:clamp(28px,8vw,44px)/1.1 "Lobster",cursive;color:#00ffff;text-shadow:2px 2px 0 #0000aa,4px 4px 0 #000055,0 0 14px #00ffff99}
+
+/* ---------- 3D куб «как в PowerPoint» ---------- */
+.stage{position:relative;margin:0 auto 6px;width:var(--S)}
+.scene{width:var(--S);height:var(--S);perspective:calc(var(--S)*2.6);perspective-origin:50% 45%}
+.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:translateZ(calc(var(--S)/-2))}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  background:var(--gg) 0 0/64px 192px;animation:glit .5s steps(3) infinite;border:2px solid #fff3a0}
+.f-front{transform:translateZ(calc(var(--S)/2))}
+.f-right{transform:rotateY(90deg) translateZ(calc(var(--S)/2))}
+.f-left{transform:rotateY(-90deg) translateZ(calc(var(--S)/2))}
+.f-top{transform:rotateX(90deg) translateZ(calc(var(--S)/2))}
+.f-bottom{transform:rotateX(-90deg) translateZ(calc(var(--S)/2))}
+.f-back{transform:rotateY(180deg) translateZ(calc(var(--S)/2))}
+.face img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);object-fit:cover;border:2px solid #000}
+.face .t{position:absolute;left:0;right:0;top:12px;font:clamp(26px,8.4vw,44px)/1 "Lobster",cursive;letter-spacing:1px;
+  background:linear-gradient(180deg,#fff200 0%,#ff8a00 45%,#ff1a8c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(1px 1px 0 #000) drop-shadow(-1px -1px 0 #000) drop-shadow(1px -1px 0 #000) drop-shadow(-1px 1px 0 #000) drop-shadow(3px 4px 0 #3b0060)}
+.face .c{position:absolute;left:8px;right:8px;bottom:8px;padding:8px 8px 9px;font:700 clamp(14px,4vw,18px)/1.2 "Comic Sans MS","Pangolin",cursive;color:#fff;
+  background:linear-gradient(0deg,rgba(60,0,90,.92),rgba(60,0,90,.55) 70%,transparent);text-shadow:1px 1px 0 #000}
+.face .n{position:absolute;right:14px;top:12px;font:700 11px Tahoma,sans-serif;color:#fff;background:#000a;padding:1px 5px;border-radius:2px;font-style:normal}
+.face .big{position:absolute;inset:0;display:grid;place-items:center;font-size:calc(var(--S)*.42);filter:drop-shadow(4px 6px 0 #6a0040)}
+.shadow{width:70%;height:18px;margin:10px auto 0;border-radius:50%;background:radial-gradient(#ff00cc88,transparent 70%);filter:blur(2px)}
+.pptbar{display:flex;flex-wrap:wrap;gap:2px 10px;justify-content:space-between;margin-top:8px;padding:3px 6px;background:#c0c0c0;color:#000;
+  font:11px Tahoma,Verdana,sans-serif;border:2px solid;border-color:#808080 #fff #fff #808080;text-align:left}
+
+/* ---------- стих и пожелания ---------- */
+.poem{position:relative;margin:0 auto;padding:22px 14px;max-width:520px;font:clamp(25px,7vw,34px)/1.25 "Marck Script",cursive;
+  border:6px double #ffd700;border-radius:16px;background:radial-gradient(#4a0060cc,#1a0030cc);box-shadow:0 0 22px #ffd70066}
+.poem p{margin:0 0 14px;background:var(--gg) 0 0/64px 192px;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:glit .5s steps(3) infinite;filter:drop-shadow(1px 1px 0 #4a2500)}
+.poem p:last-of-type{margin-bottom:0}
+.rose{position:absolute;font-size:30px;animation:spin 6s linear infinite}
+.r1{left:-14px;top:-16px}.r2{right:-14px;top:-16px;animation-direction:reverse}.r3{left:-14px;bottom:-16px;animation-direction:reverse}.r4{right:-14px;bottom:-16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wishes{list-style:none;margin:0 auto;padding:0;max-width:540px;text-align:left}
+.wishes li{margin:0 0 10px;padding:8px 10px 8px 40px;position:relative;background:linear-gradient(90deg,#ff00aa33,#00ffff22);border:2px dashed #ff69b4;border-radius:10px;font-size:clamp(16px,4.6vw,20px)}
+.wishes li::before{content:"✔";position:absolute;left:12px;top:7px;color:#7fff00;font-weight:700;text-shadow:0 0 6px #7fff00}
+.new{font:700 12px Tahoma,sans-serif;font-style:normal;color:#ff0;background:red;padding:1px 4px;margin-left:4px;animation:blink .6s steps(2) infinite;white-space:nowrap}
+
+/* ---------- подвал 1998 ---------- */
+.counter{font:700 15px Tahoma,Verdana,sans-serif;color:#7fff00;margin:8px 0}
+.counter span{display:inline-flex;gap:2px;margin-left:8px;vertical-align:middle}
+.counter b{background:#000;color:#fff;font:700 18px/1 "Courier New",monospace;padding:4px 5px;border:1px solid #666;box-shadow:inset 0 -8px #222}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;margin:12px 0}
+.links a{color:#00ffff;font-size:15px}
+.links a:visited{color:#ff00ff}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:14px 0}
+.badges span{width:88px;height:31px;font:9px/1.2 Tahoma,sans-serif;display:grid;place-content:center;background:linear-gradient(#000080,#0000d0);border:1px outset #aaf;color:#ff0}
+.badges b{font-size:12px;color:#fff}
+.badges .b2{background:linear-gradient(#006400,#00a000)}.badges .b3{background:linear-gradient(#8b008b,#ff00ff)}.badges .b4{background:linear-gradient(#444,#888)}
+.construct{margin:14px 0;padding:7px;font:700 15px Tahoma,sans-serif;color:#000;background:repeating-linear-gradient(-45deg,#ffd600 0 16px,#000 16px 32px);text-shadow:0 0 3px #ffd600,0 0 3px #ffd600}
+.construct::first-line{background:#ffd600}
+.foot{font:12px/1.5 "Times New Roman",serif;color:#c9a8ff;margin:10px 0 0}
+
+/* ---------- летающие головы, подглядывание, частицы ---------- */
+#heads{position:fixed;inset:0;pointer-events:none;z-index:20}
+.head{position:absolute;left:0;top:0;width:86px;height:86px;will-change:transform}
+.head img{position:absolute;left:18px;top:14px;width:50px;height:58px;object-fit:cover;border-radius:50%;
+  -webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent 100%);mask-image:radial-gradient(closest-side,#000 70%,transparent 100%)}
+.head svg{position:absolute;inset:0;overflow:visible}
+.head .w{transform-origin:32px 46px;animation:flap .32s ease-in-out infinite alternate}
+@keyframes flap{to{transform:rotate(24deg) scaleX(.82)}}
+#peek{position:fixed;z-index:30;width:120px;height:140px;object-fit:cover;border-radius:50%;pointer-events:none;opacity:0;
+  -webkit-mask-image:radial-gradient(closest-side,#000 65%,transparent 100%);mask-image:radial-gradient(closest-side,#000 65%,transparent 100%);transition:transform .9s ease,opacity .3s}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:25}
+
+#checker{position:fixed;inset:0;z-index:55;pointer-events:none}
+#checker i{position:absolute;background:var(--teal);transform-origin:100% 50%;transition:transform .32s linear}
+#checker i.go{transform:scaleX(0)}
+.msg{position:fixed;z-index:70;left:50%;top:40%;transform:translate(-50%,-50%);width:min(90vw,340px)}
+#snd{position:fixed;right:10px;bottom:10px;z-index:40;min-width:0;padding:6px 10px;font-size:18px}
+
+/* ---------- эффекты появления PowerPoint ---------- */
+.fx{opacity:0}
+.fx.on[data-fx=fly]{animation:fly .8s cubic-bezier(.2,.9,.3,1.2) forwards}
+.fx.on[data-fx=zoom]{animation:zoom .9s cubic-bezier(.2,.9,.3,1.3) forwards}
+.fx.on[data-fx=spiral]{animation:spiral 1.1s ease-out forwards}
+.fx.on[data-fx=wheel]{animation:wheel 1s linear forwards}
+@keyframes fly{from{opacity:1;transform:translateX(-110vw)}to{opacity:1;transform:none}}
+@keyframes zoom{from{opacity:0;transform:scale(.1)}to{opacity:1;transform:none}}
+@keyframes spiral{from{opacity:0;transform:rotate(720deg) scale(.05) translate(60vw,-40vh)}to{opacity:1;transform:none}}
+@keyframes wheel{from{opacity:1;clip-path:polygon(50% 50%,50% 0,50% 0,50% 0,50% 0,50% 0,50% 0)}25%{opacity:1;clip-path:polygon(50% 50%,50% 0,100% 0,100% 50%,100% 50%,100% 50%,100% 50%)}
+  50%{opacity:1;clip-path:polygon(50% 50%,50% 0,100% 0,100% 100%,50% 100%,50% 100%,50% 100%)}75%{opacity:1;clip-path:polygon(50% 50%,50% 0,100% 0,100% 100%,0 100%,0 50%,0 50%)}
+  to{opacity:1;clip-path:polygon(50% 50%,50% 0,100% 0,100% 100%,0 100%,0 0,50% 0)}}
+@media (prefers-reduced-motion:reduce){.wordart .L,.flags i,.rose{animation:none}}
+
+/* ---------- прогноз: Крузак и барсетка ---------- */
+.dream{margin:0 auto 22px;max-width:520px;padding:10px;border-radius:6px;background:var(--gg) 0 0/64px 192px;animation:glit .5s steps(3) infinite;box-shadow:0 0 26px #ffd70088}
+.dream.fx{opacity:0}
+.dream img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:3px ridge #fff3a0}
+.dream figcaption{margin-top:8px;padding:6px 4px 4px;font:clamp(26px,7.4vw,36px)/1.1 "Lobster",cursive;color:#fff;background:#2a0040e6;text-shadow:2px 2px 0 #b8005c,4px 4px 0 #3b0060}
+.dream small{display:block;margin-top:4px;font:700 clamp(14px,4vw,17px)/1.3 "Comic Sans MS","Pangolin",cursive;text-shadow:1px 1px 0 #000;color:#ffe9a8}
